@@ -125,9 +125,15 @@ typedef struct typed_result_t {
 
 #define NUM_TESTS 100
 
-#define set_type(return_t) const char *type = "%"#return_t;
+static const size_t MAX_SIZE = (size_t) -1000; // I'm trying to choose a number that will rarely be returned.
 
-#define test(func, return_t) Result *test_str##func(func(), Result *results) { set_type(return_t) // NOLINT
+#define set_type(return_t) const char *type = "%"#return_t
+
+#define test(func, return_t) Result *test_str##func(func(), Result *results) { \
+    set_type(return_t); \
+    results->result = MAX_SIZE; \
+    results->type = "str"#func; \
+    results++;
 
 #define add_result(result_val) \
     results->result = (size_t) (result_val); \
@@ -266,12 +272,22 @@ void compare_all_string_funcs(const StringFuncs *all_string_funcs, const uint nu
         for (uint j = 0; j < num_results; ++j) {
             const Result *const baseline = baseline_results + j;
             const Result *const test = test_results + j;
+            if (test->result == MAX_SIZE) {
+                printf("\t%s's results:\n", test->type);
+                continue;
+            }
             bool correct = baseline->result == test->result;
             if (!correct) {
                 num_wrong++;
             }
             char *const format = (char *) malloc(10 * sizeof(char));
-            sprintf(format, "\t%s %s %s\n", baseline->type, correct ? "==" : "!=", test->type);
+            
+            sprintf(format, "\t\t%s %s %s%s\n",
+                    baseline->type,
+                    correct ? "==" : "!=",
+                    test->type,
+                    correct ? "" : "\t\t(FAILED)"
+            );
             printf(format, baseline->result, test->result);
             free(format);
         }
