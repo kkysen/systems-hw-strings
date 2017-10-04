@@ -4,62 +4,62 @@
 
 #include "string_funcs.h"
 
-size_t m_strlen(const char *const s) {
+size_t my_strlen(const char *const s) {
     const char *p = s - 1;
     while (*++p);
     return p - s;
 }
 
-size_t m_strnlen(const char *const s, size_t length) {
+size_t my_strnlen(const char *const s, size_t length) {
     const char *p = s - 1;
     length += 2;
     while (--length && *++p);
     return p - s;
 }
 
-char *m_strcpy(char *dest, const char *src) {
+char *my_strcpy(char *dest, const char *src) {
     char *tmp = dest;
     while ((*dest++ = *src++));
     return tmp;
 }
 
-char *m_strncpy(char *dest, const char *src, size_t length) {
+char *my_strncpy(char *dest, const char *src, size_t length) {
     char *tmp = dest;
     while (length-- && (*dest++ = *src++));
     return tmp;
 }
 
-char *m_strcat(char *dest, const char *src) {
+char *my_strcat(char *dest, const char *src) {
     char *tmp = dest;
     while (*dest++);
     while ((*dest++ = *src++));
     return tmp;
 }
 
-char *m_strncat(char *dest, const char *src, size_t length) {
+char *my_strncat(char *dest, const char *src, size_t length) {
     char *tmp = dest;
     while (*dest++);
     while (length-- && (*dest++ = *src++));
     return tmp;
 }
 
-int m_strcmp(const char *s1, const char *s2) {
+int my_strcmp(const char *s1, const char *s2) {
     char c1;
     char c2;
     while ((c1 = *s1++) && (c2 = *s2++) && c1 == c2);
     return c1 - c2;
 }
 
-int m_strncmp(const char *s1, const char *s2, size_t length) {
+int my_strncmp(const char *s1, const char *s2, size_t length) {
     char c1;
     char c2;
     while (length-- && (c1 = *s1++) && (c2 = *s2++) && c1 == c2);
     return c1 - c2;
 }
 
-char *m_strchr(const char *s, const int c) {
+char *my_strchr(const char *s, const int c) {
     if (c == 0) {
-        return (char *) s + m_strlen(s);
+        return (char *) s + my_strlen(s);
     }
     char temp;
     while ((temp = *s++) && temp != c);
@@ -69,9 +69,51 @@ char *m_strchr(const char *s, const int c) {
     return NULL;
 }
 
-char *m_strstr(const char *s1, const char *s2) {
+char *my_strstr(const char *s1, const char *s2) {
     for (int i = 0; s1[i]; s1++) {
     
     }
     return (char *) s1; // FIXME
+}
+
+/*
+ * These functions implement DW's headers
+ * by simply wrapping the above my_ prefixed functions,
+ * which implement the same headers in string.h.
+ */
+
+int mystrlen(char *s) {
+    return (int) my_strlen(s);
+}
+
+int mystrnlen(char *s, int n) {
+    return (int) my_strnlen(s, (size_t) n);
+}
+
+char *mystrcpy(char *dest, char *source) {
+    return my_strcpy(dest, source);
+}
+
+char *mystrncpy(char *dest, char *source, int n) {
+    return my_strncpy(dest, source, (size_t) n);
+}
+
+char *mystrcat(char *dest, char *source) {
+    return my_strcat(dest, source);
+}
+
+char *mystrncat(char *dest, char *source, int n) {
+    return my_strncat(dest, source, (size_t) n);
+}
+
+int mystrcmp(char *s1, char *s2) {
+    return my_strcmp(s1, s2);
+}
+
+char *mystrchr(char *s1, char c) {
+    return (char *) my_strchr(s1, c);
+}
+
+char *mystrstr(char *s1, char *s2) {
+    return (char *) my_strstr(s1, s2);
 }
