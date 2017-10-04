@@ -9,6 +9,10 @@
 #include <stdbool.h>
 #include <time.h>
 
+typedef unsigned int uint;
+
+size_t strnlen(const char *s, size_t n); // gcc can't find header for some reason
+
 size_t m_strlen(const char *const s) {
     const char *p = s - 1;
     while (*++p);
@@ -184,18 +188,22 @@ test(nlen, zu)
 end_test()
 
 test(cpy, p)
+    add_result(0);
     // TODO
 end_test()
 
 test(ncpy, p)
+    add_result(0);
     // TODO
 end_test()
 
 test(cat, p)
+    add_result(0);
     // TODO
 end_test()
 
 test(ncat, p)
+    add_result(0);
     // TODO
 end_test()
 
@@ -205,6 +213,7 @@ test(cmp, d)
 end_test()
 
 test(ncmp, d)
+    add_result(0);
     // TODO
 end_test()
 
@@ -213,6 +222,7 @@ test(chr, p)
 end_test()
 
 test(str, p)
+    add_result(0);
     // TODO
 end_test()
 
