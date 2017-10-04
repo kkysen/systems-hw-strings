@@ -4,7 +4,6 @@ project(Strings)
 set(CMAKE_CXX_STANDARD 17)
 
 set(SOURCE_FILES
-        strings.c
-        )
+        string_funcs.c string_funcs.h string_tests.c string_tests.h)
 
 add_executable(Strings ${SOURCE_FILES})

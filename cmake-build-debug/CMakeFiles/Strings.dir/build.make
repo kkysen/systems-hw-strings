@@ -57,41 +57,67 @@ include CMakeFiles/Strings.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Strings.dir/flags.make
 
-CMakeFiles/Strings.dir/strings.c.o: CMakeFiles/Strings.dir/flags.make
-CMakeFiles/Strings.dir/strings.c.o: ../strings.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/kkyse/workspace/Systems/Strings/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Strings.dir/strings.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Strings.dir/strings.c.o   -c /cygdrive/c/Users/kkyse/workspace/Systems/Strings/strings.c
+CMakeFiles/Strings.dir/string_funcs.c.o: CMakeFiles/Strings.dir/flags.make
+CMakeFiles/Strings.dir/string_funcs.c.o: ../string_funcs.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/kkyse/workspace/Systems/Strings/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Strings.dir/string_funcs.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Strings.dir/string_funcs.c.o   -c /cygdrive/c/Users/kkyse/workspace/Systems/Strings/string_funcs.c
 
-CMakeFiles/Strings.dir/strings.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Strings.dir/strings.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/c/Users/kkyse/workspace/Systems/Strings/strings.c > CMakeFiles/Strings.dir/strings.c.i
+CMakeFiles/Strings.dir/string_funcs.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Strings.dir/string_funcs.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/c/Users/kkyse/workspace/Systems/Strings/string_funcs.c > CMakeFiles/Strings.dir/string_funcs.c.i
 
-CMakeFiles/Strings.dir/strings.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Strings.dir/strings.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/c/Users/kkyse/workspace/Systems/Strings/strings.c -o CMakeFiles/Strings.dir/strings.c.s
+CMakeFiles/Strings.dir/string_funcs.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Strings.dir/string_funcs.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/c/Users/kkyse/workspace/Systems/Strings/string_funcs.c -o CMakeFiles/Strings.dir/string_funcs.c.s
 
-CMakeFiles/Strings.dir/strings.c.o.requires:
+CMakeFiles/Strings.dir/string_funcs.c.o.requires:
 
-.PHONY : CMakeFiles/Strings.dir/strings.c.o.requires
+.PHONY : CMakeFiles/Strings.dir/string_funcs.c.o.requires
 
-CMakeFiles/Strings.dir/strings.c.o.provides: CMakeFiles/Strings.dir/strings.c.o.requires
-	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/strings.c.o.provides.build
-.PHONY : CMakeFiles/Strings.dir/strings.c.o.provides
+CMakeFiles/Strings.dir/string_funcs.c.o.provides: CMakeFiles/Strings.dir/string_funcs.c.o.requires
+	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/string_funcs.c.o.provides.build
+.PHONY : CMakeFiles/Strings.dir/string_funcs.c.o.provides
 
-CMakeFiles/Strings.dir/strings.c.o.provides.build: CMakeFiles/Strings.dir/strings.c.o
+CMakeFiles/Strings.dir/string_funcs.c.o.provides.build: CMakeFiles/Strings.dir/string_funcs.c.o
+
+
+CMakeFiles/Strings.dir/string_tests.c.o: CMakeFiles/Strings.dir/flags.make
+CMakeFiles/Strings.dir/string_tests.c.o: ../string_tests.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/kkyse/workspace/Systems/Strings/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Strings.dir/string_tests.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Strings.dir/string_tests.c.o   -c /cygdrive/c/Users/kkyse/workspace/Systems/Strings/string_tests.c
+
+CMakeFiles/Strings.dir/string_tests.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Strings.dir/string_tests.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/c/Users/kkyse/workspace/Systems/Strings/string_tests.c > CMakeFiles/Strings.dir/string_tests.c.i
+
+CMakeFiles/Strings.dir/string_tests.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Strings.dir/string_tests.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/c/Users/kkyse/workspace/Systems/Strings/string_tests.c -o CMakeFiles/Strings.dir/string_tests.c.s
+
+CMakeFiles/Strings.dir/string_tests.c.o.requires:
+
+.PHONY : CMakeFiles/Strings.dir/string_tests.c.o.requires
+
+CMakeFiles/Strings.dir/string_tests.c.o.provides: CMakeFiles/Strings.dir/string_tests.c.o.requires
+	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/string_tests.c.o.provides.build
+.PHONY : CMakeFiles/Strings.dir/string_tests.c.o.provides
+
+CMakeFiles/Strings.dir/string_tests.c.o.provides.build: CMakeFiles/Strings.dir/string_tests.c.o
 
 
 # Object files for target Strings
 Strings_OBJECTS = \
-"CMakeFiles/Strings.dir/strings.c.o"
+"CMakeFiles/Strings.dir/string_funcs.c.o" \
+"CMakeFiles/Strings.dir/string_tests.c.o"
 
 # External object files for target Strings
 Strings_EXTERNAL_OBJECTS =
 
-Strings.exe: CMakeFiles/Strings.dir/strings.c.o
+Strings.exe: CMakeFiles/Strings.dir/string_funcs.c.o
+Strings.exe: CMakeFiles/Strings.dir/string_tests.c.o
 Strings.exe: CMakeFiles/Strings.dir/build.make
 Strings.exe: CMakeFiles/Strings.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/kkyse/workspace/Systems/Strings/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable Strings.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/kkyse/workspace/Systems/Strings/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable Strings.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Strings.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -99,7 +125,8 @@ CMakeFiles/Strings.dir/build: Strings.exe
 
 .PHONY : CMakeFiles/Strings.dir/build
 
-CMakeFiles/Strings.dir/requires: CMakeFiles/Strings.dir/strings.c.o.requires
+CMakeFiles/Strings.dir/requires: CMakeFiles/Strings.dir/string_funcs.c.o.requires
+CMakeFiles/Strings.dir/requires: CMakeFiles/Strings.dir/string_tests.c.o.requires
 
 .PHONY : CMakeFiles/Strings.dir/requires
 

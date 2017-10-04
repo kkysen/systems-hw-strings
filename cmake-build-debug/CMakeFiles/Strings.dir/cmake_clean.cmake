@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Strings.dir/strings.c.o"
+  "CMakeFiles/Strings.dir/string_funcs.c.o"
+  "CMakeFiles/Strings.dir/string_tests.c.o"
   "Strings.pdb"
   "Strings.exe"
   "libStrings.dll.a"

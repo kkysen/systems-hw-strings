@@ -123,32 +123,59 @@ Strings/fast:
 	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/build
 .PHONY : Strings/fast
 
-strings.o: strings.c.o
+string_funcs.o: string_funcs.c.o
 
-.PHONY : strings.o
+.PHONY : string_funcs.o
 
 # target to build an object file
-strings.c.o:
-	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/strings.c.o
-.PHONY : strings.c.o
+string_funcs.c.o:
+	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/string_funcs.c.o
+.PHONY : string_funcs.c.o
 
-strings.i: strings.c.i
+string_funcs.i: string_funcs.c.i
 
-.PHONY : strings.i
+.PHONY : string_funcs.i
 
 # target to preprocess a source file
-strings.c.i:
-	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/strings.c.i
-.PHONY : strings.c.i
+string_funcs.c.i:
+	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/string_funcs.c.i
+.PHONY : string_funcs.c.i
 
-strings.s: strings.c.s
+string_funcs.s: string_funcs.c.s
 
-.PHONY : strings.s
+.PHONY : string_funcs.s
 
 # target to generate assembly for a file
-strings.c.s:
-	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/strings.c.s
-.PHONY : strings.c.s
+string_funcs.c.s:
+	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/string_funcs.c.s
+.PHONY : string_funcs.c.s
+
+string_tests.o: string_tests.c.o
+
+.PHONY : string_tests.o
+
+# target to build an object file
+string_tests.c.o:
+	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/string_tests.c.o
+.PHONY : string_tests.c.o
+
+string_tests.i: string_tests.c.i
+
+.PHONY : string_tests.i
+
+# target to preprocess a source file
+string_tests.c.i:
+	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/string_tests.c.i
+.PHONY : string_tests.c.i
+
+string_tests.s: string_tests.c.s
+
+.PHONY : string_tests.s
+
+# target to generate assembly for a file
+string_tests.c.s:
+	$(MAKE) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/string_tests.c.s
+.PHONY : string_tests.c.s
 
 # Help Target
 help:
@@ -159,9 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Strings"
-	@echo "... strings.o"
-	@echo "... strings.i"
-	@echo "... strings.s"
+	@echo "... string_funcs.o"
+	@echo "... string_funcs.i"
+	@echo "... string_funcs.s"
+	@echo "... string_tests.o"
+	@echo "... string_tests.i"
+	@echo "... string_tests.s"
 .PHONY : help
 
 

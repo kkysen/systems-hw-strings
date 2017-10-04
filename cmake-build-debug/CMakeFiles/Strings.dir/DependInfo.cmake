@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/cygdrive/c/Users/kkyse/workspace/Systems/Strings/strings.c" "/cygdrive/c/Users/kkyse/workspace/Systems/Strings/cmake-build-debug/CMakeFiles/Strings.dir/strings.c.o"
+  "/cygdrive/c/Users/kkyse/workspace/Systems/Strings/string_funcs.c" "/cygdrive/c/Users/kkyse/workspace/Systems/Strings/cmake-build-debug/CMakeFiles/Strings.dir/string_funcs.c.o"
+  "/cygdrive/c/Users/kkyse/workspace/Systems/Strings/string_tests.c" "/cygdrive/c/Users/kkyse/workspace/Systems/Strings/cmake-build-debug/CMakeFiles/Strings.dir/string_tests.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
