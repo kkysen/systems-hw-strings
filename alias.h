@@ -5,6 +5,8 @@
 #ifndef STRINGS_ALIAS_H
 #define STRINGS_ALIAS_H
 
+#define ALIAS_MAIN false
+
 void make_aliases();
 
 #endif //STRINGS_ALIAS_H

@@ -7,9 +7,12 @@
 #include <stdio.h>
 
 #include "string_funcs.h"
+#include "alias.h"
 
 int main() {
     printf("test\n");
+    
+    make_aliases();
     
     //my_strlen
     printf("\"Hello\" has %zu characters.\n", my_strlen("Hello"));

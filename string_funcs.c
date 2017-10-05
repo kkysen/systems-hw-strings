@@ -45,15 +45,15 @@ char *my_strncat(char *dest, const char *src, size_t length) {
 }
 
 int my_strcmp(const char *s1, const char *s2) {
-    char c1;
-    char c2;
+    char c1 = 0;
+    char c2 = 0;
     while ((c1 = *s1++) && (c2 = *s2++) && c1 == c2);
     return c1 - c2;
 }
 
 int my_strncmp(const char *s1, const char *s2, size_t length) {
-    char c1;
-    char c2;
+    char c1 = 0;
+    char c2 = 0;
     while (length-- && (c1 = *s1++) && (c2 = *s2++) && c1 == c2);
     return c1 - c2;
 }
