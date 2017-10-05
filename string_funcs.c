@@ -32,6 +32,7 @@ char *my_strncpy(char *dest, const char *src, size_t length) {
 char *my_strcat(char *dest, const char *src) {
     char *tmp = dest;
     while (*dest++);
+    // maybe do dest-- to skip null terminator
     while ((*dest++ = *src++));
     return tmp;
 }
