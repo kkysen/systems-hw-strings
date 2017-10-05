@@ -1,4 +1,4 @@
-CC = gcc -ggdb -std=c11 -Wall -Werror
+CC = gcc -ggdb -std=c11 -Wall -Werror -O3
 
 all: string_tests.o string_funcs.o
 	$(CC) -o string_tests string_tests.o string_funcs.o
