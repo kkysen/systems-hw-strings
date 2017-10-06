@@ -23,3 +23,4 @@ clean:
 
 run: all
 	./string_tests
+
