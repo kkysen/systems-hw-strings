@@ -2,6 +2,8 @@
 // Created by kkyse on 10/4/2017.
 //
 
+#include <string.h>
+#include <stdio.h>
 #include "string_funcs.h"
 
 size_t my_strlen(const char *const s) {
@@ -26,13 +28,16 @@ char *my_strcpy(char *dest, const char *src) {
 char *my_strncpy(char *dest, const char *src, size_t length) {
     char *tmp = dest;
     while (length-- && (*dest++ = *src++));
+    if (length > 0) {
+        memset(dest, 0, length + 1);
+    }
     return tmp;
 }
 
 char *my_strcat(char *dest, const char *src) {
     char *tmp = dest;
     while (*dest++);
-    // maybe do dest-- to skip null terminator
+    dest--;
     while ((*dest++ = *src++));
     return tmp;
 }
@@ -40,7 +45,11 @@ char *my_strcat(char *dest, const char *src) {
 char *my_strncat(char *dest, const char *src, size_t length) {
     char *tmp = dest;
     while (*dest++);
+    dest--;
     while (length-- && (*dest++ = *src++));
+    if (length > 0) {
+        *dest = 0; // add null terminator
+    }
     return tmp;
 }
 
@@ -71,10 +80,12 @@ char *my_strchr(const char *s, const int c) {
 }
 
 char *my_strstr(const char *s1, const char *s2) {
-    for (int i = 0; s1[i]; s1++) {
-    
-    }
-    return (char *) s1; // FIXME
+    printf("my_strstr is not implemented yet\n");
+    return strstr(s1, s2);
+//    for (int i = 0; s1[i]; s1++) {
+//
+//    }
+//    return (char *) s1; // FIXME
 }
 
 /*
@@ -112,9 +123,9 @@ int mystrcmp(char *s1, char *s2) {
 }
 
 char *mystrchr(char *s1, char c) {
-    return (char *) my_strchr(s1, c);
+    return my_strchr(s1, c);
 }
 
 char *mystrstr(char *s1, char *s2) {
-    return (char *) my_strstr(s1, s2);
+    return my_strstr(s1, s2);
 }

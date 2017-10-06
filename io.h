@@ -23,6 +23,4 @@ bool dangerous_filename(const char *const filename);
 
 char *checked_filename(const char *const filename);
 
-int modify_file(const char *const filename, int (*modifier)(const FILE *const file))
-
 #endif //STRINGS_IO_H

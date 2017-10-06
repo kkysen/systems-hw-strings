@@ -55,6 +55,6 @@ char *checked_filename(const char *const filename) {
     return new_filename;
 }
 
-int modify_file(const char *const filename, int (*modifier)(const FILE *const file)) {
-    return 0; // TODO
-}
+//int modify_file(const char *const filename, int (*const modifier)(const FILE *const file)) {
+//    return 0; // TODO
+//}
