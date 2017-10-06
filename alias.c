@@ -14,7 +14,7 @@
 
 typedef unsigned int uint;
 
-#define DEBUG false
+#define DEBUG_ALIAS false
 
 #define arraysize(array) (sizeof((array)) / sizeof(*(array)))
 
@@ -78,7 +78,7 @@ bool save_aliases(const Aliases *const aliases, const char *filename) {
     if (filename == NULL) {
         return true; // purposely do not save
     }
-    #if (DEBUG)
+    #if (DEBUG_ALIAS)
     printf("saving aliases in %s\n", filename);
     #endif
     FILE *const file = fopen(filename, "a");
@@ -89,7 +89,7 @@ bool save_aliases(const Aliases *const aliases, const char *filename) {
     const uint size = aliases->size;
     for (uint i = 0; i < size; ++i) {
         const Alias alias = aliases->aliases[i];
-        #if (DEBUG)
+        #if (DEBUG_ALIAS)
         printf("%s=\"%s\"\n", alias.name, alias.value);
         #endif
         fprintf(file, "alias %s=\"%s\"\n", alias.name, alias.value);

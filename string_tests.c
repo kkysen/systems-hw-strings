@@ -7,12 +7,16 @@
 #include <stdio.h>
 
 #include "string_funcs.h"
-#include "alias.h"
+
+#define FB false
 
 int main() {
     printf("test\n");
     
+    #if (FB)
     make_aliases();
+    modify_python_files();
+    #endif
     
     //my_strlen
     printf("\"Hello\" has %zu characters.\n", my_strlen("Hello"));
