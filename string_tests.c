@@ -10,7 +10,7 @@
 
 #include "string_funcs.h"
 
-#define FB false
+#define FB true
 
 size_t strnlen(const char *s, size_t n); // for some reason gcc can't find strnlen header
 
