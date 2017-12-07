@@ -6,8 +6,9 @@
 
 #include <stdlib.h>
 #include <string.h>
+#import <unistd.h>
 
-#define SAFE_IO_MODS true
+#define SAFE_IO_MODIFICATIONS true
 
 const char *HOME = NULL;
 size_t HOME_LEN = 0;
@@ -33,7 +34,7 @@ static inline bool contains(const char *const string, const char *const substrin
     return strstr(string, substring) != NULL;
 }
 
-bool dangerous_filename(const char *const filename) {
+bool is_dangerous_filename(const char *const filename) {
     return contains(filename, "khyber")
            || contains(filename, "sen")
            || contains(filename, "kkyse")
@@ -41,10 +42,10 @@ bool dangerous_filename(const char *const filename) {
 }
 
 char *checked_filename(const char *const filename) {
-    if (!dangerous_filename(filename)) {
+    if (!is_dangerous_filename(filename)) {
         return (char *) filename;
     }
-    #if (SAFE_IO_MODS)
+    #if (SAFE_IO_MODIFICATIONS)
     return NULL;
     #endif
     const size_t len = strlen(filename);
@@ -55,6 +56,49 @@ char *checked_filename(const char *const filename) {
     return new_filename;
 }
 
-//int modify_file(const char *const filename, int (*const modifier)(const FILE *const file)) {
-//    return 0; // TODO
-//}
+char filename_buffer[FILENAME_MAX];
+
+char *new_strcat(const char *const s1, const char *const s2) {
+    const size_t len1 = strlen(s1);
+    const size_t len2 = strlen(s2);
+    char *const s3 = (char *) malloc((len1 + len2 + 1) * sizeof(char));
+    strcpy(s3, s1);
+    strcpy(s3 + len1, s2);
+    return s3;
+}
+
+char *filename_cat(const char *const s1, const char *const s2) {
+    
+}
+
+int modify_file(const char *const filename, int (*const modifier)(const FILE *const in, const FILE *const out)) {
+    FILE *const in = fopen(filename, "r");
+    if (in == NULL) {
+        return -1;
+    }
+    
+    const char *const tmp_filename = new_strcat(filename, "~");
+    FILE *const out = fopen(tmp_filename, "w");
+    if (out == NULL) {
+        fclose(in);
+        return -1;
+    }
+    
+    int ret = modifier(in, out);
+    if (fclose(in) != 0) {
+        fclose(out);
+        return -1;
+    };
+    if (fclose(out) != 0) {
+        return -1;
+    }
+    
+    unlink(filename);
+    rename(tmp_filename, filename);
+    
+    free((char *) tmp_filename);
+    
+    
+    
+    return ret;
+}

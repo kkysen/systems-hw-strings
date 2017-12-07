@@ -19,7 +19,7 @@ const size_t get_home_len();
 
 bool is_sudo();
 
-bool dangerous_filename(const char *const filename);
+bool is_dangerous_filename(const char *const filename);
 
 char *checked_filename(const char *const filename);
 
